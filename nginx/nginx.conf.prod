@@ -7,6 +7,10 @@ server {
     proxy_pass http://frontend:3000;
   }
 
+  location /img {
+    proxy_pass http://api:3024;
+  }  
+
   location /api {
     proxy_pass http://api:3024;
   }  
