@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  frontend:
+    build: ./burgerReact
+    container_name:  docker-burgerreact-frontend
+    command: serve -s dist -l 3000
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - docker-burgerreact-network
+    # stdin_open: true
+    # tty: true   
+
   api:
     build: ./api
     container_name: docker-burgerreact-api
