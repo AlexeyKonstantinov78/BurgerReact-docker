@@ -5,23 +5,32 @@ services:
     build: ./burgerReact
     container_name:  docker-burgerreact-frontend
     command: serve -s dist -l 3000
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
+    restart: unless-stopped 
+    depends_on:
+      - api
     networks:
       - docker-burgerreact-network
-    # stdin_open: true
-    # tty: true   
-
+    
   api:
     build: ./api
     container_name: docker-burgerreact-api
     command: npm run start
-    restart: unless-stopped
-    ports:
-      - "3024:3024" 
+    restart: unless-stopped    
     environment:
       - PORT=3024
+    networks:
+      - docker-burgerreact-network
+  
+  nginx:
+    image: nginx:stable-alpine
+    container_name: docker-burgerreact-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf
+    depends_on:
+      - frontend
+      - api
     networks:
       - docker-burgerreact-network
 

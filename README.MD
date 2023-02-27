@@ -5,3 +5,5 @@
 * React (Vite) - Redux..
 
 ссылка для отправки данных 'https://cloudy-slash-rubidium.glitch.me/api/order'
+
+главное не забываем менять адрес в nginx и const API_URI 
