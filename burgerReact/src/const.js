@@ -1,4 +1,6 @@
-export const API_URI = 'http://realworld-docker.com';
+// export const API_URI = process.env.REACT_APP_API_URI;
+export const API_URI = ``;
+console.log(API_URI);
 // export const API_URI = 'http://localhost:3024';
 // export const API_URI = 'https://api-your-meal.glitch.me';
 // export const API_URI = 'http://localhost:3024';
